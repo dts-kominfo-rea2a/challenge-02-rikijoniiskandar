@@ -23,19 +23,55 @@ function lakukanLooping(arrPegawai) {
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = null;
+  let hasilLooping = [];
+  for (let i = 1; i <= dataYangAkanDilooping.length; i++) {
+    const namaLengkap = dataYangAkanDilooping;
+
+    namaLengkap.forEach(data => {
+      hasilLooping.push(data.namaDepan + ' ' + data.namaBelakang)
+    })
+    if ([i === namaLengkap.length]) {
+      break
+    }
+  }
 
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
   let jumlahPria = null;
+  for (let i = 1; i <= dataYangAkanDilooping.length; i++) {
+    const totalPegawai = dataYangAkanDilooping;
+    const jenisKelamin = []
+    totalPegawai.forEach(data => {
+      if (data.jenisKelamin === 'M') {
+        jenisKelamin.push(data.jenisKelamin)
+      }
+      jumlahPria = jenisKelamin.length
+    })
+    if ([i === totalPegawai.length]) {
+      break
+    }
+  }
 
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
   let jumlahWanita = null;
+  for (let i = 1; i <= dataYangAkanDilooping.length; i++) {
+    const totalPegawai = dataYangAkanDilooping;
+    const jenisKelamin = []
+    totalPegawai.forEach(data => {
+      if (data.jenisKelamin === 'F') {
+        jenisKelamin.push(data.jenisKelamin)
+      }
+      jumlahWanita = jenisKelamin.length
+    })
+    if ([i === totalPegawai.length]) {
+      break
+    }
+  }
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -48,7 +84,26 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = null;
+  let komentar = "haha";
+  for (let i = 1; i < dataYangAkanDilooping.length; i++) {
+    const pegawai = dataYangAkanDilooping;
+    const pria = []
+    const wanita = []
+    pegawai.forEach(data => {
+      if (data.jenisKelamin === 'M') {
+        pria.push(data.jenisKelamin)
+      } else {
+        wanita.push(data.jenisKelamin)
+      }
+    })
+    if (pria.length > wanita.length) {
+      komentar = "Jumlah Pria lebih banyak dari Wanita"
+    } else if (wanita.length > pria.length) {
+      komentar = "Jumlah Wanita lebih banyak dari Pria"
+    } else {
+      komentar = "Jumlah Pria dan Wanita berimbang"
+    }
+  }
 
   // ! JANGAN DIMODIFIKASI
   return {
