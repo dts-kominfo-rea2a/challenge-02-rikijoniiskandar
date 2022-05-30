@@ -24,14 +24,12 @@ function lakukanLooping(arrPegawai) {
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
   let hasilLooping = [];
-  for (let i = 1; i <= dataYangAkanDilooping.length; i++) {
-    const namaLengkap = dataYangAkanDilooping;
-
-    namaLengkap.forEach(data => {
-      hasilLooping.push(data.namaDepan + ' ' + data.namaBelakang)
-    })
-    if ([i === namaLengkap.length]) {
-      break
+  for (let i = 0; i <= dataYangAkanDilooping.length; i++) {
+    const profil = dataYangAkanDilooping[i];
+    if(profil !== undefined ){
+      const namaDepan = profil.namaDepan
+      const namaBelakang = profil.namaBelakang
+      hasilLooping.push(namaDepan + ' ' + namaBelakang)
     }
   }
 
@@ -40,18 +38,17 @@ function lakukanLooping(arrPegawai) {
       yang berisi jumlah pria dari masing masing pegawai
   */
   let jumlahPria = null;
-  for (let i = 1; i <= dataYangAkanDilooping.length; i++) {
-    const totalPegawai = dataYangAkanDilooping;
-    const jenisKelamin = []
-    totalPegawai.forEach(data => {
-      if (data.jenisKelamin === 'M') {
-        jenisKelamin.push(data.jenisKelamin)
-      }
-      jumlahPria = jenisKelamin.length
-    })
-    if ([i === totalPegawai.length]) {
-      break
+  let totalPria = []
+  for (let i = 0; i <= dataYangAkanDilooping.length; i++) {
+    const profil = dataYangAkanDilooping[i];
+    if(profil !== undefined) {
+     let jenisKelamin = profil.jenisKelamin
+     if(jenisKelamin === 'M'){
+       totalPria.push(jenisKelamin)
+     }
+     jumlahPria = totalPria.length
     }
+   
   }
 
   /*
@@ -59,17 +56,15 @@ function lakukanLooping(arrPegawai) {
       yang berisi jumlah wanita dari masing masing pegawai
   */
   let jumlahWanita = null;
-  for (let i = 1; i <= dataYangAkanDilooping.length; i++) {
-    const totalPegawai = dataYangAkanDilooping;
-    const jenisKelamin = []
-    totalPegawai.forEach(data => {
-      if (data.jenisKelamin === 'F') {
-        jenisKelamin.push(data.jenisKelamin)
+  let totalWanita = []
+  for (let i = 0; i <= dataYangAkanDilooping.length; i++) {
+    const profil = dataYangAkanDilooping[i];    
+    if( profil !== undefined){
+      let jenisKelamin = profil.jenisKelamin
+      if (jenisKelamin === 'F'){
+        totalWanita.push(jenisKelamin)
       }
-      jumlahWanita = jenisKelamin.length
-    })
-    if ([i === totalPegawai.length]) {
-      break
+      jumlahWanita = totalWanita.length
     }
   }
 
@@ -84,18 +79,19 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = "haha";
-  for (let i = 1; i < dataYangAkanDilooping.length; i++) {
-    const pegawai = dataYangAkanDilooping;
-    const pria = []
-    const wanita = []
-    pegawai.forEach(data => {
-      if (data.jenisKelamin === 'M') {
-        pria.push(data.jenisKelamin)
+  let komentar = "";
+  const pria = []
+  const wanita = []
+  for (let i = 0; i <= dataYangAkanDilooping.length; i++) {
+    const pegawai = dataYangAkanDilooping[i];
+    if ( pegawai !== undefined ) {
+      let jenisKelamin = pegawai.jenisKelamin
+      if( jenisKelamin === 'M'){
+        pria.push(jenisKelamin)
       } else {
-        wanita.push(data.jenisKelamin)
+        wanita.push(jenisKelamin)
       }
-    })
+    }
     if (pria.length > wanita.length) {
       komentar = "Jumlah Pria lebih banyak dari Wanita"
     } else if (wanita.length > pria.length) {
@@ -120,6 +116,7 @@ function main(data) {
   console.log(hasil.hasilLooping);
   console.log(hasil.jumlahPria);
   console.log(hasil.jumlahWanita);
+  console.log(hasil.komentar);
 
   return hasil;
 }
